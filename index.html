@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#e9e4db" />
+    <title>Seaside — Bảo tàng ảnh cưới</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+
+    <!-- Loading / intro overlay -->
+    <div id="intro" class="overlay">
+      <div class="intro-card">
+        <p class="eyebrow">BỘ SƯU TẬP ẢNH CƯỚI</p>
+        <h1>Seaside</h1>
+        <p class="subtitle">Một bảo tàng 3D của biển, đá và khoảnh khắc</p>
+        <div id="loadbar"><div id="loadfill"></div></div>
+        <button id="enterBtn" disabled>Đang tải…</button>
+        <p class="hint">
+          Máy tính: <b>W A S D</b> để đi · <b>Chuột</b> để nhìn · <b>Click ảnh</b> để tới gần ·
+          <b>Chuột phải</b> để mở thông tin → <b>Xem ảnh full</b> · <b>Esc</b> để thả chuột<br />
+          Điện thoại: dùng <b>cần gạt</b> bên trái · <b>kéo</b> để nhìn · <b>chạm ảnh</b> để mở thông tin
+        </p>
+      </div>
+    </div>
+
+    <!-- In-world HUD -->
+    <div id="hud" class="hidden">
+      <div id="crosshair"></div>
+      <div id="zone-label"></div>
+      <button id="helpBtn" class="chip" title="Trợ giúp">?</button>
+      <button id="soundBtn" class="chip" title="Âm thanh">♪</button>
+      <button id="vrBtn" class="chip hidden" title="Vào VR">VR</button>
+    </div>
+
+    <!-- Artwork info panel -->
+    <div id="panel" class="hidden">
+      <button id="panel-close" aria-label="Đóng">×</button>
+      <div class="panel-index"></div>
+      <h2 class="panel-title"></h2>
+      <p class="panel-caption"></p>
+      <p class="panel-meta"></p>
+      <button id="panel-full">⤢ Xem ảnh full</button>
+    </div>
+
+    <!-- Full-image zoom lightbox -->
+    <div id="lightbox" class="hidden">
+      <button id="lb-close" aria-label="Đóng">×</button>
+      <button id="lb-prev" class="lb-nav" aria-label="Trước">‹</button>
+      <button id="lb-next" class="lb-nav" aria-label="Sau">›</button>
+      <div id="lb-stage">
+        <div id="lb-spinner"></div>
+        <img id="lb-img" alt="" draggable="false" />
+      </div>
+      <div id="lb-bar">
+        <div id="lb-title"></div>
+        <div id="lb-sub"></div>
+        <div id="lb-hint">Cuộn / nhíp để phóng to · kéo để di chuyển</div>
+      </div>
+    </div>
+
+    <!-- Mobile controls -->
+    <div id="touch" class="hidden">
+      <div id="joystick"><div id="stick"></div></div>
+      <div id="look-hint">Kéo để nhìn · Chạm ảnh để xem</div>
+    </div>
+
+    <!-- Rotate-to-landscape prompt (mobile portrait) -->
+    <div id="rotate">
+      <div class="rotate-icon">▢</div>
+      <p>Xoay ngang thiết bị<br /><span>để có trải nghiệm đẹp nhất</span></p>
+    </div>
+
+    <!-- Minimap -->
+    <canvas id="minimap" class="hidden" width="220" height="150"></canvas>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
